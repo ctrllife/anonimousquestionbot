@@ -47,7 +47,7 @@ async def check_sub(channels, user_id):
 
         if member.status in [ChatMemberStatus.MEMBER, ChatMemberStatus.CREATOR, ChatMemberStatus.ADMINISTRATOR]:
             n += 1
-    if n == len(CHANNELS):
+    if n == 1:
         return True
     return False
 
