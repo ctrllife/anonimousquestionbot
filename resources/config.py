@@ -1,4 +1,4 @@
-TOKEN = '7515549962:AAFxTvj-kBQu3xCgPGm4Tldm7xoAxR3wu_o'
+TOKEN = '7515549962:AAGZ3Ds3p_sQsskqsiG2d0CvMWo-FapDXIs'
 
 CHANNELS = [
     ['garazh | dev', '-1002200501928', 'https://t.me/garazh_dev'],
