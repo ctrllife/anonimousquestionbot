@@ -154,7 +154,7 @@ https://t.me/anonimous_questions_bot?start={message.from_user.id}
 async def links(message: types.Message):
     if await check_sub(CHANNELS, message.from_user.id):
         await message.answer(text='''
-<b>Здесь вы можете найти канал команды разработчиков, а также канал и сайт каждого из них ✨</b>
+<b>Здесь вы можете найти канал и сайт разработчика ✨</b>
 ''', parse_mode='HTML', reply_markup=links_kb)
     else:
         await message.answer(text=f'''
@@ -168,7 +168,7 @@ async def admin(message: types.Message):
         if str(message.from_user.id) in ADMIN_IDS:
             await message.answer(text='<b>🍺 Админская панель 🍺</b>', reply_markup=admin_kb, parse_mode='HTML')
         else:
-            await message.answer(text='❌ <b>Вы не админ!</b> ❌', parse_mode='HTML')
+            pass
 
     else:
         await message.answer(text=f'''
@@ -243,66 +243,4 @@ async def statistics(callback: types.CallbackQuery):
 ''', parse_mode='HTML')
 
 
-# @main_router.callback_query(F.data == 'must_sub')
-# async def must_sub(callback: types.CallbackQuery):
-#     await callback.message.answer(text=f'''
-# <b>Каналы с обязательной подпиской</b>
-#
-# Выберите действие, который вы хотите сделать с каналами:
-# ''', reply_markup=add_delete_kb, parse_mode='HTML')
 
-
-# @main_router.callback_query(F.data == 'add_channel')
-# async def add_channel(callback: types.CallbackQuery, state: FSMContext):
-#     if len(CHANNELS) != 3:
-#         await state.set_state(AddChannel.name)
-#         await callback.message.answer(text=f'<b>Введите название канала:</b>', parse_mode='HTML')
-#     else:
-#         await callback.message.answer(text='<b>Сначала удалите любой канал из обязательной подписки, так как их количество не должно превышать 3</b>', parse_mode='HTML', reply_markup=delete_kb)
-#
-# @main_router.message(AddChannel.name)
-# async def add_channel_id(message: types.Message, state: FSMContext):
-#     await state.update_data(name=message.text)
-#     await state.set_state(AddChannel.id)
-#     await message.answer(text=f'''
-# <b>Перешлите любое сообщение из канала для получения его id:</b>''', parse_mode='HTML')
-#
-#
-# @main_router.message(AddChannel.id)
-# async def add_channel_url(message: types.Message, state: FSMContext):
-#     await state.update_data(id=message.chat.id)
-#     await state.set_state(AddChannel.url)
-#     await message.answer(text=f'''
-# <b>Пришлите URL канала в формате "https://t.me/..." без кавычек:</b>''', parse_mode='HTML')
-#
-#
-# @main_router.message(AddChannel.url)
-# async def add_channel_check(message: types.Message, state: FSMContext):
-#     await state.update_data(url=message.text)
-#     data = await state.get_data()
-#     await state.set_state(AddChannel.check)
-#     await message.answer(text=f'''
-# <b>Почти готово! Осталось только добавить этого бота в администраторы канала (без всех разрешений), и проверить работоспособность кнопки под этим сообщением (такая же будет в обязательной подписке). Если всё верно - введите "1" без кавычек, после чего канал сразу добавится в продвижение</b>''', reply_markup=await create_buttons(data["name"], data["url"]), parse_mode='HTML')
-#
-#
-# @main_router.message(AddChannel.check)
-# async def add_channel_end(message: types.Message, state: FSMContext):
-#     await state.update_data(check=message.text)
-#     data = await state.get_data()
-#     if data["check"] == '1':
-#         channel = [data["name"], data["id"], data["url"]]
-#         CHANNELS.append(channel)
-#     await message.answer(text=f'''
-# <b>Канал успешно добавлен в обязательную подписку ✅</b>''', parse_mode='HTML', reply_markup=admin_kb)
-#
-# @main_router.callback_query(F.data == 'delete_channel')
-# async def delete_channel(callback: types.CallbackQuery):
-#     await callback.message.answer(text='Выберите канал из кнопок ниже, который вы хотите удалить. После нажатия на кнопку канал автоматически удалится из обязательной подписки', reply_markup=await delete_channels(CHANNELS))
-#
-#
-# @main_router.callback_query(F.data.startswith('delete_channel_'))
-# async def delete_channel_number(callback: types.CallbackQuery):
-#     print(callback.data)
-#     ind = callback.data[-1]
-#     await del_channel(int(ind))
-#     await callback.message.answer(text='Канал успешно удалён ✅', reply_markup=admin_kb)

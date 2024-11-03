@@ -43,11 +43,8 @@ write_kb = InlineKeyboardMarkup(inline_keyboard=[
 ])
 
 links_kb = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='garazh | dev', url='https://t.me/garazh_dev')],
     [InlineKeyboardButton(text='yura_zhukoff', url='https://t.me/yura_zhukoff')],
-    [InlineKeyboardButton(text="Albert's channel", url='https://t.me/itbert_live')],
-    [InlineKeyboardButton(text='ctrllife 🌐', url='https://ctrllife.taplink.ws'),
-     InlineKeyboardButton(text='itbert 🌐', url='https://taplink.cc/itbert')]
+    [InlineKeyboardButton(text='ctrllife 🌐', url='https://ctrllife.taplink.ws')]
 ])
 
 admin_kb = InlineKeyboardMarkup(inline_keyboard=[
