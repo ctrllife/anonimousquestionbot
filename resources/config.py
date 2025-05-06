@@ -1,9 +1,9 @@
-TOKEN = '7515549962:AAGZ3Ds3p_sQsskqsiG2d0CvMWo-FapDXIs'
+TOKEN = 'TOKEN'
 
 CHANNELS = [
-     ['yura_zhukoff', '-1002158505404', 'https://t.me/yura_zhukoff']
+     ['NAME_CHANNEL', 'ID_CHANNEL', 'URL_CHANNEL']
 ]
 
 NOT_SUB_MESSAGE = '❌ Вы не подписались на все каналы! ❌'
 
-ADMIN_IDS = ['5288849370']
+ADMIN_IDS = ['ID_ADMIN']
